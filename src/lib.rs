@@ -97,9 +97,9 @@ where
     IN4: OutputPin,
 {
     /// Creates a new `Stepper`
-    pub fn uln2003(index: u8, direction: Direction, in1: IN1, in2: IN2, in3: IN3, in4: IN4) -> Self {
+    pub fn uln2003(direction: Direction, in1: IN1, in2: IN2, in3: IN3, in4: IN4) -> Self {
         Stepper {
-            index,
+            index: 0,
             direction,
             in1,
             in2,
