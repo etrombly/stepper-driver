@@ -25,17 +25,19 @@ pub enum Direction {
     CCW,
 }
 
-const STEPS:[[State; 4]; 4] = [[State::HIGH,State::HIGH,State::LOW,State::LOW],
-                [State::LOW,State::HIGH,State::HIGH,State::LOW],
-                [State::LOW,State::LOW,State::HIGH,State::HIGH],
-                [State::HIGH,State::LOW,State::LOW,State::HIGH],];
+const STEPS: [[State; 4]; 4] = [
+    [State::HIGH, State::HIGH, State::LOW, State::LOW],
+    [State::LOW, State::HIGH, State::HIGH, State::LOW],
+    [State::LOW, State::LOW, State::HIGH, State::HIGH],
+    [State::HIGH, State::LOW, State::LOW, State::HIGH],
+];
 
 fn digital_write(state: &State, pin: &mut OutputPin) {
     match state {
         &State::HIGH => pin.set_high(),
         &State::LOW => pin.set_low(),
     }
-} 
+}
 
 /// A stepper motor driver
 pub struct Stepper<IN1, IN2, IN3, IN4, IC>
@@ -62,7 +64,7 @@ where
     IN4: OutputPin,
 {
     /// Change the stepper direction
-    pub fn direction(&mut self, direction: Direction){
+    pub fn direction(&mut self, direction: Direction) {
         self.direction = direction;
     }
 
@@ -74,16 +76,20 @@ where
         digital_write(&STEPS[self.index as usize][3], &mut self.in4);
 
         self.index = match self.direction {
-            Direction::CW => {if self.index < 3 {
+            Direction::CW => {
+                if self.index < 3 {
                     self.index + 1
                 } else {
                     0
-                }},
-            Direction::CCW => {if self.index > 0 {
+                }
+            }
+            Direction::CCW => {
+                if self.index > 0 {
                     self.index - 1
                 } else {
                     3
-                }},
+                }
+            }
         };
         self
     }
@@ -109,4 +115,3 @@ where
         }
     }
 }
-
