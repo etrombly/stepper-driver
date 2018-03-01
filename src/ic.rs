@@ -4,5 +4,5 @@
 ///
 /// # Connections
 ///
-/// 
+///
 pub struct ULN2003;
