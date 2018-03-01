@@ -87,6 +87,15 @@ where
         };
         self
     }
+
+    /// Disable stepper
+    pub fn disable(&mut self) -> &mut Self {
+        self.in1.set_low();
+        self.in2.set_low();
+        self.in3.set_low();
+        self.in4.set_low();
+        self
+    }
 }
 
 impl<IN1, IN2, IN3, IN4> Stepper<IN1, IN2, IN3, IN4, ic::ULN2003>
