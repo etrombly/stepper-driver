@@ -48,7 +48,8 @@ where
     IN4: OutputPin,
 {
     index: u8,
-    direction: Direction,
+    /// clockwise or counterclockwise rotation
+    pub direction: Direction,
     in1: IN1,
     in2: IN2,
     in3: IN3,
