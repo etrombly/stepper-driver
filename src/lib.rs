@@ -47,7 +47,7 @@ where
     IN3: OutputPin,
     IN4: OutputPin,
 {
-    index: u8,
+    index: usize,
     /// clockwise or counterclockwise rotation
     pub direction: Direction,
     in1: IN1,
@@ -71,10 +71,10 @@ where
 
     /// Make the stepper move one step
     pub fn step(&mut self) -> &mut Self {
-        digital_write(&STEPS[self.index as usize][0], &mut self.in1);
-        digital_write(&STEPS[self.index as usize][1], &mut self.in2);
-        digital_write(&STEPS[self.index as usize][2], &mut self.in3);
-        digital_write(&STEPS[self.index as usize][3], &mut self.in4);
+        digital_write(&STEPS[self.index][0], &mut self.in1);
+        digital_write(&STEPS[self.index][1], &mut self.in2);
+        digital_write(&STEPS[self.index][2], &mut self.in3);
+        digital_write(&STEPS[self.index][3], &mut self.in4);
 
         self.index = match self.direction {
             Direction::CW => {
