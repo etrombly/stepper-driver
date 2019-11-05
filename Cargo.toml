@@ -2,6 +2,7 @@
 name = "stepper-driver"
 version = "0.1.0"
 authors = ["Eric Trombly <etrombly@yahoo.com>"]
+edition = "2018"
 
 [dependencies]
-embedded-hal = "0.2.1"
+embedded-hal = "0.2.3"
